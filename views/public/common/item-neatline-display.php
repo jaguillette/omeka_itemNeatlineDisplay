@@ -1,5 +1,4 @@
 <?php
-echo current_url();
 if ($neatlineExhibit = metadata('item', array('Neatline Display','Neatline Exhibit'))):
 	if ($neatlineRecord = metadata('item', array('Neatline Display','Neatline Record'))) {
 		# neatlineRecord is set
