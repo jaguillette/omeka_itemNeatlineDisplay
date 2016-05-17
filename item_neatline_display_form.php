@@ -14,8 +14,8 @@ $elements = apply_filters(
 $exhibitName = "Elements[".$elements[0]["id"]."][0][text]";
 $exhibitValue = metadata('item', array('Neatline Display', 'Neatline Exhibit'));
 $exhibitAttributes = array("class"=>"neatline-exhibit");
-$exhibitOptions = array();
-$exhibits = get_records('NeatlineExhibit');
+$exhibitOptions = array(""=>"[None Selected]");
+$exhibits = get_records('NeatlineExhibit',array(),999);
 foreach ($exhibits as $exhibit) {
 	$exhibitOptions += array($exhibit['slug'] => $exhibit['title']);
 }
@@ -24,7 +24,7 @@ foreach ($exhibits as $exhibit) {
 $recordName = "Elements[".$elements[1]["id"]."][0][text]";
 $recordValue = metadata('item', array('Neatline Display', 'Neatline Record'));
 $recordAttributes = array('class'=>'neatline-exhibit');
-$recordOptions = array();
+$recordOptions = array(""=>"[None Selected]");
 # If there is a selected Neatline exhibit, filter records to that exhibit. Otherwise, do not filter.
 if ($exhibitValue) {
 	$selectedExhibit = get_record('NeatlineExhibit',array('slug'=>$exhibitValue));
