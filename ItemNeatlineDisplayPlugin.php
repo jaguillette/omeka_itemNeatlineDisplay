@@ -10,6 +10,10 @@ class ItemNeatlineDisplayPlugin extends Omeka_Plugin_AbstractPlugin
 		"public_items_show"
 	);
 
+	protected $_filters = array(
+		"admin_items_form_tabs"
+	);
+
 	public function hookInstall()
 	{
 		// Don't install if an element set by the name "MOL Metadata" already exists.
@@ -40,4 +44,22 @@ class ItemNeatlineDisplayPlugin extends Omeka_Plugin_AbstractPlugin
 	{
 		echo common('item-neatline-display');
 	}
+
+    /**
+     * Add the "Neatline Display" tab to the admin items add/edit page.
+     *
+     * @return array
+     */
+    public function filterAdminItemsFormTabs($tabs, $args)
+    {
+    	$item = $args['item'];
+
+    	ob_start();
+        include 'item_neatline_display_form.php';
+        $content = ob_get_contents();
+        ob_end_clean();
+
+    	$tabs['Neatline Display'] = $content;
+    	return $tabs;
+    }
 }
