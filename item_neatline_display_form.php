@@ -17,7 +17,7 @@ $exhibitAttributes = array("class"=>"neatline-exhibit");
 $exhibitOptions = array(""=>"[None Selected]");
 $exhibits = get_records('NeatlineExhibit',array(),999);
 foreach ($exhibits as $exhibit) {
-	$exhibitOptions += array($exhibit['slug'] => $exhibit['title']);
+	$exhibitOptions += array($exhibit['id'] => $exhibit['title']);
 }
 
 # Get the parameters for the record select input

@@ -1,5 +1,6 @@
 <?php
-if ($neatlineExhibit = metadata('item', array('Neatline Display','Neatline Exhibit'))):
+if ($exhibitId = metadata('item', array('Neatline Display','Neatline Exhibit'))):
+	$neatlineExhibit = get_record('NeatlineExhibit',array('id'=>$exhibitId))['slug'];
 	if ($neatlineRecord = metadata('item', array('Neatline Display','Neatline Record'))) {
 		# neatlineRecord is set
 	} else { $neatlineRecord = "";}
