@@ -27,7 +27,7 @@ $recordAttributes = array('class'=>'neatline-exhibit');
 $recordOptions = array(""=>"[None Selected]");
 # If there is a selected Neatline exhibit, filter records to that exhibit. Otherwise, do not filter.
 if ($exhibitValue) {
-	$selectedExhibit = get_record('NeatlineExhibit',array('slug'=>$exhibitValue));
+	$selectedExhibit = get_record('NeatlineExhibit',array('id'=>$exhibitValue));
 	$recordFilter = array('exhibit_id'=>$selectedExhibit['id']);
 } else {
 	$recordFilter = array();
